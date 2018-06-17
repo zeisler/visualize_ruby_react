@@ -8,14 +8,20 @@ require('codemirror/mode/xml/xml');
 require('codemirror/mode/markdown/markdown');
 
 var defaults = {
-  markdown: '# Heading\n\nSome **bold** and _italic_ text\nBy [Jed Watson](https://github.com/JedWatson)',
-  ruby: 'var component = {\n\tname: "react-codemirror",\n\tauthor: "Jed Watson",\n\trepo: "https://github.com/JedWatson/react-codemirror"\n};'
+  elsif_statement: "if project.done?\n" +
+                   "  go_on_vacation\n" +
+                   "elsif project.blocked?\n" +
+                   "  eat(:donuts)\n" +
+                   "else\n" +
+                   "  sleep\n" +
+                   "end"
 };
 
 var Editor = createReactClass({
   getInitialState () {
+    this.updateCode(defaults.elsif_statement);
     return {
-      code: defaults.ruby,
+      code: defaults.elsif_statement,
       readOnly: false,
       mode: 'ruby',
     };
