@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './index.css';
 import Editor from './Editor.js'
+import Version from './Version.js'
 
 class App extends Component {
 
@@ -15,7 +16,8 @@ class App extends Component {
             Helps developers better understand code and explain it to the non-technical.
           </span>
         </header>
-       <Editor></Editor>
+        <Editor></Editor>
+        <Version></Version>
       </div>
     );
   }
