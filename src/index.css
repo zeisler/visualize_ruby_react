@@ -8,16 +8,16 @@ body {
   display: flex;
 }
 
-.column {
-  flex: 50%;
-}
+/*.column {*/
+  /*flex: 50%;*/
+/*}*/
 
 .svgContent {
   margin: 10px;
 }
 
 .editor {
-  max-width: 500px;
+  min-width: 250px;
 }
 
 .description {

@@ -1,13 +1,14 @@
+import Env from "./Env.js"
 var React = require('react');
-const createReactClass = require('create-react-class');
 
-var Version = createReactClass({
-  getInitialState() {
+class Version extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { version: ""};
     this.getVersion();
-    return {};
-  },
+  }
   getVersion() {
-    fetch('https://visualize-ruby.herokuapp.com/visualize_ruby/version', {
+    fetch(Env.apiHost + '/visualize_ruby/version', {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
@@ -19,7 +20,7 @@ var Version = createReactClass({
         this.setState({version: data["version"]});
       })
     })
-  },
+  }
   render() {
     return (
         <div>
@@ -29,6 +30,6 @@ var Version = createReactClass({
         </div>
     );
   }
-});
+}
 
 export default Version
