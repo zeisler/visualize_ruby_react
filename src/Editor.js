@@ -132,7 +132,7 @@ class Editor extends React.Component {
   }
 
   downloadSVG() {
-    this.download("svp", "image/svg+xml")
+    this.download("svg", "image/svg+xml")
   }
 
   downloadDOT() {
@@ -208,10 +208,10 @@ class Editor extends React.Component {
                    href={"/" + (_.isEmpty(this.state.shareKey) ? "#" : this.state.shareKey)}
                    onClick={this.shareURL.bind(this)}>Share URL</a>
                 <div className="download">
-                  Download: <a href='#' onClick={this.downloadPNG.bind(this)}>png</a>
-                            <a href="#" onClick={this.downloadDOT.bind(this)}>dot</a>
-                            <a href="#" onClick={this.downloadPDF.bind(this)}>pdf</a>
-                            <a href="#" onClick={this.downloadSVG.bind(this)}>svg</a>
+                  Download: <a href='#' onClick={this.downloadPNG.bind(this)}>png</a>&nbsp;
+                            <a href="#" onClick={this.downloadDOT.bind(this)}>dot</a>&nbsp;
+                            <a href="#" onClick={this.downloadPDF.bind(this)}>pdf</a>&nbsp;
+                            <a href="#" onClick={this.downloadSVG.bind(this)}>svg</a>&nbsp;
                 </div>
               </div>
               <div className="row svgContent" dangerouslySetInnerHTML={{__html: this.state.graph}}/>
