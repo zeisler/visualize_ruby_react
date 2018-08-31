@@ -7,7 +7,7 @@ import React from "react"
 
 require('codemirror/mode/ruby/ruby');
 
-var defaults = {
+const defaults = {
   elsif_statement: "if project.done?\n" +
   "  go_on_vacation\n" +
   "elsif project.blocked?\n" +
@@ -39,11 +39,11 @@ class Editor extends React.Component {
   }
 
   getCode() {
-    var shareKey = window.location.pathname;
+    let shareKey = window.location.pathname;
     if (shareKey === "/") {
       return this.setState({ruby_code: defaults.elsif_statement, code: defaults.elsif_statement});
     }
-    var that = this;
+    let that = this;
     fetch(Env.apiHost + '/visualize_ruby/share' + shareKey, {method: 'GET'}
     ).then((response) => {
       response.json().then(data => {
@@ -127,6 +127,14 @@ class Editor extends React.Component {
     this.download("png", "application/png")
   }
 
+  downloadPDF() {
+    this.download("pdf", "application/pdf")
+  }
+
+  downloadSVG() {
+    this.download("svp", "image/svg+xml")
+  }
+
   downloadDOT() {
     this.download("dot", "text/dot")
   }
@@ -174,12 +182,8 @@ class Editor extends React.Component {
     });
   }
 
-  editorResize(stuff) {
-    console.log(stuff)
-  }
-
   render() {
-    var options = {
+    let options = {
       lineNumbers: true,
       readOnly: false,
       mode: 'ruby'
@@ -189,7 +193,7 @@ class Editor extends React.Component {
           <div className="row">
             <div className="editorWrapper">
               <CodeMirror className="column editor" value={this.state.code} onChange={this.updateCode.bind(this)}
-                          options={options} autoFocus={true} onResize={this.editorResize.bind(this)}/>
+                          options={options} autoFocus={true}/>
             </div>
             <div className="viewer">
               <div className="renderOptions">
@@ -204,8 +208,10 @@ class Editor extends React.Component {
                    href={"/" + (_.isEmpty(this.state.shareKey) ? "#" : this.state.shareKey)}
                    onClick={this.shareURL.bind(this)}>Share URL</a>
                 <div className="download">
-                  Download: <a href='#' onClick={this.downloadPNG.bind(this)}>png</a> <a href="#"
-                                                                                         onClick={this.downloadDOT.bind(this)}>dot</a>
+                  Download: <a href='#' onClick={this.downloadPNG.bind(this)}>png</a>
+                            <a href="#" onClick={this.downloadDOT.bind(this)}>dot</a>
+                            <a href="#" onClick={this.downloadPDF.bind(this)}>pdf</a>
+                            <a href="#" onClick={this.downloadSVG.bind(this)}>svg</a>
                 </div>
               </div>
               <div className="row svgContent" dangerouslySetInnerHTML={{__html: this.state.graph}}/>
@@ -215,6 +221,6 @@ class Editor extends React.Component {
         </div>
     );
   }
-};
+}
 
 export default Editor
