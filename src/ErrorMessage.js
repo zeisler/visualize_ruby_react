@@ -15,7 +15,7 @@ class ErrorMessage extends React.Component {
     if(this.props.exception){
       return <div className="errorMessage">
         <div>{this.humanMessage()}</div>
-        <div><pre>{this.props.exception.type}</pre></div>
+        <div><pre>{this.props.exception.error_type}</pre></div>
         <div><pre>{this.props.exception.message}</pre></div>
       </div>;
     }else{
