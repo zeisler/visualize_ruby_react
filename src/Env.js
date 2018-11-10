@@ -7,7 +7,7 @@ var Env = {
   },
   production: {
     apiHost: "https://visualize-ruby.herokuapp.com",
-    fontHost: "https://visualize-ruby.herokuapp.com"
+    fontHost: "https://zeisler.github.io/visualize_ruby"
   }
 }[environment];
 
