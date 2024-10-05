@@ -18,5 +18,7 @@ COPY . ./
 
 EXPOSE 3000
 
+ENV NODE_ENV=production
+
 # start app
-CMD ["npm", "start"]
+CMD ["npm", "run", "build"]
