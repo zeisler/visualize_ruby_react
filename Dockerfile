@@ -13,9 +13,6 @@ COPY package-lock.json ./
 RUN npm install --silent
 RUN npm install react-scripts@5.0.1 -g --silent
 
-# add app
-COPY . ./
-
 EXPOSE 3000
 
 ENV NODE_ENV=production
